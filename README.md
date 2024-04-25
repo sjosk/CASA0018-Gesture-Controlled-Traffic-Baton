@@ -30,24 +30,28 @@ The Gesture-Controlled Traffic Baton project is built on an integrated system ar
 
   
 
-3. **Output Module**: An LED matrix and a set of traffic batons are controlled based on recognized gestures. This visual feedback system displays various symbols, such as upward arrows, right arrows, and stop signals, serving as traffic indicators to drivers and pedestrians and innovatively mimicking traditional traffic light systems. 
-
-  
+3. **Output Module**: An LED matrix and a set of traffic batons are controlled based on recognized gestures. This visual feedback system displays various symbols, such as upward arrows, right arrows, and stop signals, serving as traffic indicators to drivers and pedestrians and innovatively mimicking traditional traffic light systems.
+<div align="center">
+ <img src="https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/IMG_7274.JPG" alt="Arduino led matrix demo2" width="400" height="300"><img src="https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/IMG_7274.JPG" alt="Arduino led matrix demo2" width="400" height="300">
+</div>
 
 4. **Enclosure Design**: Inspired by the design of a wand, the enclosure is crafted to house the microcontroller and sensors while integrating the LED matrix. Due to the directional nature of the sensor data, which could potentially affect accuracy, the handle is ergonomically designed with a thumb indent to facilitate intuitive use by the operator. This feature ensures that the device is held correctly, thereby improving the reliability of gesture recognition. 
 
- 
+<div align="center">
+<img src="https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/IMG_7273.jpg" alt="enclosure" width="400" height="300">
+</div>  
 
- 
+
+
 
 ## Workflow for the machine learning  
-
+![workflow](https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/workflow.png)
  
 
 ## Data 
 
 Data collection was a foundational step in the project, focusing on gathering accurate and representative gesture data to train the machine learning model. Using the Arduino’s IMU, various gestures corresponding to traffic commands were recorded in a controlled environment. Each session captured three-dimensional acceleration and angular velocity, meticulously labeled with the gesture performed. 
-
+![dataset](https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/dataset.png)
  
 
  The database uses the Edge Impulse platform to collect movement data, which is categorized into four labels: 
@@ -65,15 +69,12 @@ Data collection was a foundational step in the project, focusing on gathering ac
 The data preprocessing involved several steps to enhance the model's learning efficacy, such as ensuring the data is Relevant, Representative, Balanced, Reliable, Well-documented, Appropriately sized, and Well-formatted. Special attention needs to be paid to the following three aspects: 
 
 **Noise Filtering**  
-
 Raw sensor data from gestures such as hit_c and hit_r occasionally contained sporadic noise. After analyzing the waveform data, these noises were identified and subsequently filtered out using a low-pass filter. This step was critical in enhancing the quality and reliability of the data by removing irrelevant fluctuations that could potentially skew the model’s performance. 
 
 **Segmentation** 
-
 To handle the continuous data streams effectively, they were segmented into fixed-size windows, with each window representing a single gesture. This process was particularly important when dealing with data collected in a 15-second continuous capture mode by different individuals. Care was taken to ensure that each segmented piece was of an appropriate length to maintain consistency in gesture representation. 
 
 **Normalization** 
-
 The collected data underwent a normalization process to ensure that the amplitude and scale were consistent across different recording sessions. This step was important for preparing the data for machine learning, as it standardized the duration of the gestures, especially ensuring that the seconds assigned to each label were consistent across both training and testing datasets. Normalization helps in mitigating the variability introduced by different recording conditions and by the inherent differences in how individuals perform gestures. 
 
 These preprocessing steps are essential to prepare the sensor data for effective training and testing of the machine learning models, leading to more accurate and robust gesture recognition. 
@@ -83,7 +84,8 @@ These preprocessing steps are essential to prepare the sensor data for effective
 ## Model 
 
 Choosing the right model architecture was important. The project initially experimented with various neural network architectures but settled on a Convolutional Neural Network (CNN) due to its superior performance in handling spatial-temporal data. CNN’s ability to extract and learn from the local features in the time-series data made it particularly suited for this application. 
-  
+
+![deep learning](https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/deeplearning.png)
 
 The final network architecture combines several convolutional layers, pooling layers, and fully connected layers, all built using the Sequential model from Keras.  
 
@@ -94,6 +96,7 @@ The convolutional layers are designed to detect features at multiple scales, whi
  
 
 ## Experiments 
+![record](https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/experiment.png)
 
 The initial experiment encountered failures due to the parameter settings for model training. I had only selected the accelerometer's x, y, and z axes, resulting in a first-experiment accuracy of only 76.2%. Subsequently, I adjusted the parameters by incorporating data from the gyroscope and magnetometer, which improved accuracy. However, there was still a gap between the accuracy and my target. To address this, I began examining the waveforms of incorrect labels and made adjustments by removing some. For each experiment, I also started using test data for predictions and experimented with different numbers of training epochs and batch sizes, while considering whether there was overfitting. 
 
@@ -104,7 +107,9 @@ Additionally, when building the model architecture, I experimented with differen
 ## Results and Observations 
 
 The final implementation of our gesture-controlled traffic baton achieved an overall accuracy of approximately 82.95% on the test dataset. I feel there is room for improvement in overall performance. The recognition of specific gestures like 'hit_c' and 'hit_r' was not as accurate as expected, with occasional errors, although the gestures 'others' and 'wave_rtol' were recognized with high accuracy.  
-
+<div align="center">
+ <img src="https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/model.png" alt="Arduino led matrix demo2" width="400" height="300"><img src="https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/testingm.png" alt="Arduino led matrix demo2" width="400" height="300">
+</div>
   
 
 To enhance model training: 
@@ -123,10 +128,13 @@ During practical applications and field tests, some challenges were noted:
 
   
 
-- **Complex Gestures**: The system occasionally struggled to differentiate similar gestures performed quickly. 
+- **Complex Gestures**: The system occasionally struggled to differentiate similar gestures performed quickly.   
 
+<div align="center">
+<img src="img/arduino.png" alt="enclosure" width="500" height="300">  <br>Arduino Serial Monitor Result   
+</div>    <br>
+    
   
-
 These observations underscore the necessity for ongoing enhancements in the system's responsiveness and accuracy, especially in real-world deployment scenarios. Despite these challenges, the project has shown considerable potential to improve traffic management. Future efforts will focus on reducing response times, enhancing gesture recognition accuracy under diverse conditions, and expanding the system's ability to manage more complex gestures. 
 
  
@@ -141,4 +149,16 @@ These observations underscore the necessity for ongoing enhancements in the syst
 
 - Pulli, K., Baksheev, A., Kornyakov, K., & Eruhimov, V. (2012). Real-time computer vision with OpenCV. *Communications of the ACM*, 55(6), 61-69. [https://doi.org/10.1145/2184319.2184337](https://doi.org/10.1145/2184319.2184337) 
 
- 
+ ----
+
+## Declaration of Authorship
+
+I, SJ. Esther Wu, confirm that the work presented in this assessment is my own. Where information has been derived from other sources, I confirm that this has been indicated in the work.
+
+
+SJW
+
+25 April 2024
+
+Word count: 1498
+
