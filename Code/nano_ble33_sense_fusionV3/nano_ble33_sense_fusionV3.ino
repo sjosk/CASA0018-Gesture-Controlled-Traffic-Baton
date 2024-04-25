@@ -321,34 +321,14 @@ uint8_t poll_mag(void) {
 }
 
 void displayRightArrow() {
-    lc.setRow(0, 0, B00100000);
-    lc.setRow(0, 1, B00110000);
-    lc.setRow(0, 2, B00011000);
-    lc.setRow(0, 3, B11111110);
-    lc.setRow(0, 4, B11111110);
-    lc.setRow(0, 5, B00011000);
-    lc.setRow(0, 6, B00110000);
-    lc.setRow(0, 7, B00100000);
+  byte right[8]={0x08,0x0c,0xfe,0xff,0xfe,0x0c,0x08,0x00}; 
 }
 
 void displayStopSign() {
-    lc.setRow(0, 0, B00111100); //  ****  
-    lc.setRow(0, 1, B01110010); // ***  * 
-    lc.setRow(0, 2, B10110001); //* **   *
-    lc.setRow(0, 3, B10011001); //*  **  *
-    lc.setRow(0, 4, B10001101); //*   ** *
-    lc.setRow(0, 5, B10001101); //*   ** *
-    lc.setRow(0, 6, B01001110); // *  ***  
-    lc.setRow(0, 7, B00111100); //  ****  
+  byte stop[8]={0x3C, 0x72, 0xB1, 0x99, 0x8D, 0x8D, 0x4E, 0x3C};
 }
 
+
 void displayUpwardArrow() {
-    lc.setRow(0, 7, B00011000);  //    **
-    lc.setRow(0, 6, B00111100);  //   ****
-    lc.setRow(0, 5, B01111110);  //  ******
-    lc.setRow(0, 4, B00011000);  //    **
-    lc.setRow(0, 3, B00011000);  //    **
-    lc.setRow(0, 2, B00011000);  //    **
-    lc.setRow(0, 1, B00011000);  //    **
-    lc.setRow(0, 0, B00011000);  //    **
+  byte up[8]={0x08,0x1c,0x3e,0x7f,0x1c,0x1c,0x1c,0x1c};
 }
