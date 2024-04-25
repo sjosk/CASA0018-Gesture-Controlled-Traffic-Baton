@@ -32,13 +32,14 @@ The Gesture-Controlled Traffic Baton project is built on an integrated system ar
 
 3. **Output Module**: An LED matrix and a set of traffic batons are controlled based on recognized gestures. This visual feedback system displays various symbols, such as upward arrows, right arrows, and stop signals, serving as traffic indicators to drivers and pedestrians and innovatively mimicking traditional traffic light systems.
 <div align="center">
- <img src="https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/IMG_7274.JPG" alt="Arduino led matrix demo2" width="400" height="300"><img src="https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/IMG_7274.JPG" alt="Arduino led matrix demo2" width="400" height="300">
-</div>
+ <img src="https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/IMG_7274.JPG" alt="Arduino led matrix demo2" width="300" height="200"><img src="https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/IMG_7274.JPG" alt="Arduino led matrix demo2" width="300" height="200"><img src="https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/IMG_7280.JPG" width="300" height="200">
+</div><br>
 
 4. **Enclosure Design**: Inspired by the design of a wand, the enclosure is crafted to house the microcontroller and sensors while integrating the LED matrix. Due to the directional nature of the sensor data, which could potentially affect accuracy, the handle is ergonomically designed with a thumb indent to facilitate intuitive use by the operator. This feature ensures that the device is held correctly, thereby improving the reliability of gesture recognition. 
 
 <div align="center">
 <img src="https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/IMG_7273.jpg" alt="enclosure" width="400" height="300">
+ <img src="https://github.com/sjosk/CASA0018-Gesture-Controlled-Traffic-Baton/blob/main/img/IMG_7284.jpg" alt="enclosure" width="300" height="300">
 </div>  
 
 
